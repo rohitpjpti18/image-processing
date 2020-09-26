@@ -1,2 +1,2 @@
 # image-processing
-An implementation of Jpeg compression using discrete fourier transform (DCT)
+An implementation of jpeg compression using discrete fourier transform (DCT)
