@@ -1,27 +1,28 @@
-struct BITMAPFILEHEADER{
-    char bmFileType[2];
-    int bmFileSize;
+
+typedef struct structBITMAPFILEHEADER{
+    short bmFileType;
+    unsigned int bmFileSize;
     short reserved1;
     short reserved2;
-    int bmOffset;
-};
+    unsigned int bmOffset;
+} BITMAPFILEHEADER;
 
 
-struct BITMAPINFOHEADER{
+typedef struct structBITMAPINFOHEADER{
     unsigned int headerSize;
-    signed int bmwidth;
-    signed int bmheight;
-    unsigned short nOfColorPlanes;
-    unsigned short nOfBitsPerPixel;
+    int bmwidth;
+    int bmheight;
+    short nOfColorPlanes;
+    short nOfBitsPerPixel;
     unsigned int compressionMethod;
     unsigned int imageSize;
-    unsigned int horizontalRes;
-    unsigned int veticalRes;
+    int horizontalRes;
+    int veticalRes;
     unsigned int nOfColors;
     unsigned int nOfImpColors;
-};
+} BITMAPINFOHEADER;
 
 
-
+void loadBMPFile(char *filename, BITMAPINFOHEADER *bmInfoHeader);
 
 
