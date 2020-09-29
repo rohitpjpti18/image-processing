@@ -23,6 +23,6 @@ typedef struct structBITMAPINFOHEADER{
 } BITMAPINFOHEADER;
 
 
-void loadBMPFile(char *filename, BITMAPINFOHEADER *bmInfoHeader);
+unsigned char* loadBMPFile(char *filename, BITMAPINFOHEADER *bmInfoHeader);
 
 
