@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include "bitmap.h"
 
-
-
 void loadBitmapFileHeader(BITMAPFILEHEADER *bitmapFileHeader, FILE *fileptr){
     fread(&bitmapFileHeader->bmFileType, sizeof(bitmapFileHeader->bmFileType), 1, fileptr);
     fread(&bitmapFileHeader->bmFileSize, sizeof(bitmapFileHeader->bmFileSize), 1, fileptr);
