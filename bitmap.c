@@ -1,6 +1,28 @@
 #include<stdio.h>
 #include<malloc.h>
-#include "bitmap.h"
+
+typedef struct structBITMAPFILEHEADER{
+    short bmFileType;
+    unsigned int bmFileSize;
+    short reserved1;
+    short reserved2;
+    unsigned int bmOffset;
+} BITMAPFILEHEADER;
+
+
+typedef struct structBITMAPINFOHEADER{
+    unsigned int headerSize;
+    int bmwidth;
+    int bmheight;
+    short nOfColorPlanes;
+    short nOfBitsPerPixel;
+    unsigned int compressionMethod;
+    unsigned int imageSize;
+    int horizontalRes;
+    int veticalRes;
+    unsigned int nOfColors;
+    unsigned int nOfImpColors;
+} BITMAPINFOHEADER;
 
 void loadBitmapFileHeader(BITMAPFILEHEADER *bitmapFileHeader, FILE *fileptr){
     fread(&bitmapFileHeader->bmFileType, sizeof(bitmapFileHeader->bmFileType), 1, fileptr);
@@ -62,20 +84,14 @@ unsigned char* loadBMPFile(char *filename, BITMAPINFOHEADER *bmInfoHeader){
         tempRGB = bitmapImage[imageIndex];
         bitmapImage[imageIndex] = bitmapImage[imageIndex + 2];
         bitmapImage[imageIndex + 2] = tempRGB;
+
+        //printf("%d %d %d\n", bitmapImage[imageIndex], bitmapImage[imageIndex+1], bitmapImage[imageIndex+2]);
     }
 
-    printf("%d %d %d\n", bitmapImage[0], bitmapImage[1], bitmapImage[2]);
+    //printf("%d %d %d\n", bitmapImage[0], bitmapImage[1], bitmapImage[2]);
 
     return bitmapImage;
 }
 
-int main(){
-    char* filename = "test.bmp";
-    BITMAPINFOHEADER bmInfo;
 
-    unsigned char *imageData;
 
-    imageData = loadBMPFile(filename, &bmInfo);
-
-    return 0;
-}
